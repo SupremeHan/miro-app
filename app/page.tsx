@@ -1,9 +1,14 @@
-import { Button } from '@/components/ui/button';
+'use client';
+
+import { UserButton } from '@clerk/clerk-react';
 
 export default function Home() {
 	return (
-		<div>
-			<Button>Click</Button>
+		<div className="flex flex-col gap-y-4">
+			<div>Auth users only</div>
+			<div>
+				<UserButton />
+			</div>
 		</div>
 	);
 }
