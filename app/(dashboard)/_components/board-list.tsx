@@ -1,6 +1,8 @@
 "use client";
 
-import { EmptyState } from "./empty-state";
+import { EmptyBoards } from "./empty-state/empty-boards";
+import { EmptyFavorites } from "./empty-state/empty-favorites";
+import { EmptySearch } from "./empty-state/empty-search";
 
 interface BoardListProps {
   orgId: string;
@@ -14,33 +16,15 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
   const data = [];
 
   if (!data.length && query.search) {
-    return (
-      <EmptyState
-        icon="/empty-search.svg"
-        title="No results found!"
-        description="Try searching for something else"
-      />
-    );
+    return <EmptySearch />;
   }
 
   if (!data.length && query.favorites) {
-    return (
-      <EmptyState
-        icon="/empty-favorites.svg"
-        title="No favorite boards!"
-        description="Try favoriting a board"
-      />
-    );
+    return <EmptyFavorites />;
   }
 
   if (!data.length) {
-    return (
-      <EmptyState
-        icon="/empty-board.svg"
-        title="Create your first board"
-        description="Start by creating a board for your first organization"
-      />
-    );
+    return <EmptyBoards />;
   }
 
   return <div>{JSON.stringify(query)}</div>;
